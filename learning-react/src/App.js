@@ -13,12 +13,12 @@ function App() {
 
   useEffect(() => {
     getLocalTodos();
-  },[])
+  },[getLocalTodos])
 
   useEffect(() => {
     filterHandler();
     saveLocalTodos();
-  }, [todos, status])
+  }, [todos, status, filterHandler, saveLocalTodos])
 
   const filterHandler = () => {
     switch(status){
