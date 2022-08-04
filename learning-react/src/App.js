@@ -3,12 +3,11 @@ import React, { useState, useEffect } from "react";
 
 import Form from "./components/Form";
 import TodoList from "./components/TodoList";
-import { GetTodos, SaveTodos } from "./Storage";
-   
+import { useTodos } from "./TodoContext";
 
 function App() {
   const [inputText, setInputText] = useState("");
-  const [todos, setTodos] = useState(GetTodos() || []);
+  const { todos, setTodos } = useTodos();
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
 
@@ -28,8 +27,7 @@ function App() {
 
   const onSetTodos = (todos) => {
     setTodos(todos);
-    SaveTodos(todos);
-  }
+  };
 
   useEffect(() => {
     filterHandler();
@@ -49,8 +47,6 @@ function App() {
       />
       <TodoList
         filteredTodos={filteredTodos}
-        setTodos={setTodos}
-        todos={todos}
       />
     </div>
   );
