@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: List files
         run: |
-          ls ${{github.workspace}} --ll
+          ls ${{github.workspace}}
       - name: NPM Build
         run: |
           npm run build
