@@ -13,10 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.2
         name: 'Checkout Sources'
-      - name: List files
-        run: |
-          ls ${{github.workspace}} -la
-
       - name: 'Install Dependencies'
         run: npm install
         working-directory: ./learning-react
@@ -24,11 +20,23 @@ jobs:
         run: |
           npm run build
         working-directory: ./learning-react
+        
+      - name: List files after build
+        run: |
+          ls ${{github.workspace}} -la
   deploy:
     name: 'Deploy'
     needs: [build]
     runs-on: ubuntu-latest
     steps:
+      - name: List files after build
+        run: |
+          ls ${{github.workspace}} -la
+      
+      - name: List files after build
+        run: |
+          ls ${{github.workspace}}/learning-react -la
+        
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
