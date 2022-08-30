@@ -11,9 +11,11 @@ jobs:
     name: 'Build React App'
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2.4.2
+        name: 'Checkout Sources'
       - name: List files
         run: |
-          ls ${{github.workspace}}
+          ls ${{github.workspace}} -la
       - name: NPM Build
         run: |
           npm run build
