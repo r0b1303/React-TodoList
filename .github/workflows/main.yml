@@ -1,26 +1,21 @@
 name: CI
 
 on:
-
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
-  workflow_dispatch:
-
-jobs:
-  build:
-  
-    runs-on: ubuntu-latest
     
+jobs:
+  deploy:
+    name: 'Deploy'
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - uses: actions/checkout@v1
+      - uses: jsmrcaga/action-netlify-deploy@master
+        with:
+          NETLIFY_AUTH_TOKEN: BqVbEiLU6h4ZfDZ_OC9Lf0SCc-0feLO_CSfdgz8G4JQ
+          NETLIFY_SITE_ID: BiMEBOFZc4m7ESP-qT__HjtiM9xMp9f1pA_NLWL5yqg
+          NETLIFY_DEPLOY_TO_PROD: true
         
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
