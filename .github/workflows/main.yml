@@ -26,12 +26,13 @@ jobs:
         working-directory: ./learning-react
   deploy:
     name: 'Deploy'
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
-          publish-dir: './learning-react/build'
+          publish-dir:  '${{github.workspace}}/learning-react/build'
           deploy-message: "Deploy from GitHub Actions"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
