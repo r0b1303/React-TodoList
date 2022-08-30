@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "main" ]
     
+defaults:
+  run:
+    working-directory: ./learning-react
+    
 jobs:
   deploy:
     name: 'Deploy'
@@ -15,7 +19,7 @@ jobs:
       - uses: jsmrcaga/action-netlify-deploy@v1.8.0
         with:
           NETLIFY_AUTH_TOKEN: BqVbEiLU6h4ZfDZ_OC9Lf0SCc-0feLO_CSfdgz8G4JQ
-          NETLIFY_SITE_ID: BiMEBOFZc4m7ESP-qT__HjtiM9xMp9f1pA_NLWL5yqg
+          NETLIFY_SITE_ID: fa2ee063-86b7-4fb1-b1b8-c8446afa4e41
           NETLIFY_DEPLOY_TO_PROD: true
           build_command: npm run build
           
