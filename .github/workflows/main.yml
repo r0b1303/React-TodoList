@@ -11,16 +11,25 @@ defaults:
     working-directory: ./learning-react
     
 jobs:
+  build:
+    name: 'Build React App'
+    runs-on: ubuntu-latest
+    steps:
+      - name: NPM Build
+        run: npm run build
+        working-directory: '${{ github.workspace }}/learning-react'
   deploy:
     name: 'Deploy'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: jsmrcaga/action-netlify-deploy@v1.8.0
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
         with:
-          NETLIFY_AUTH_TOKEN: BqVbEiLU6h4ZfDZ_OC9Lf0SCc-0feLO_CSfdgz8G4JQ
-          NETLIFY_SITE_ID: fa2ee063-86b7-4fb1-b1b8-c8446afa4e41
-          NETLIFY_DEPLOY_TO_PROD: true
-          build_command: npm run build
+          publish-dir: '${{ github.workspace }}/learning-react/build'
+          deploy-message: "Deploy from GitHub Actions"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
           
         
