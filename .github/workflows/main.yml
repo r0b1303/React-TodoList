@@ -26,7 +26,7 @@ jobs:
       - name: Publish Build Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: $ARTIFACT_NAME
+          name: ${{env.ARTIFACT_NAME}}
           path: ./learning-react/build
           
   deploy:
@@ -37,7 +37,8 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
-          name: $ARTIFACT_NAME
+          name: ${{env.ARTIFACT_NAME}}
+          path: ${{env.ARTIFACT_NAME}}
       
       - name: List files after artifact download
         run: |
@@ -46,7 +47,7 @@ jobs:
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
-          publish-dir:  '${{github.workspace}}/$ARTIFACT_NAME'
+          publish-dir:  '${{github.workspace}}/${{env.ARTIFACT_NAME}}'
           deploy-message: "Deploy from GitHub Actions"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
