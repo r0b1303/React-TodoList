@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "main" ]
     
+env:
+  ARTIFACT_NAME: react-app
+    
 jobs:
   build:
     name: 'Build React App'
@@ -20,27 +23,30 @@ jobs:
         run: |
           npm run build
         working-directory: ./learning-react
-        
-      - name: List files after build
-        run: |
-          ls ${{github.workspace}} -la
+      - name: Publish Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: $ARTIFACT_NAME
+          path: ./learning-react/build
+          
   deploy:
     name: 'Deploy'
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - name: List files after build
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: $ARTIFACT_NAME
+      
+      - name: List files after artifact download
         run: |
           ls ${{github.workspace}} -la
-      
-      - name: List files after build
-        run: |
-          ls ${{github.workspace}}/learning-react -la
         
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
-          publish-dir:  '${{github.workspace}}/learning-react/build'
+          publish-dir:  '${{github.workspace}}/$ARTIFACT_NAME'
           deploy-message: "Deploy from GitHub Actions"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
