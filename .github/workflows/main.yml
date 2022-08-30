@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - uses: r0b1303/React-TodoList/learning-react/@master
+      - uses: r0b1303/React-TodoList@master
         with:
           NETLIFY_AUTH_TOKEN: BqVbEiLU6h4ZfDZ_OC9Lf0SCc-0feLO_CSfdgz8G4JQ
           NETLIFY_SITE_ID: BiMEBOFZc4m7ESP-qT__HjtiM9xMp9f1pA_NLWL5yqg
