@@ -11,8 +11,12 @@ jobs:
     name: 'Build React App'
     runs-on: ubuntu-latest
     steps:
+      - name: List files
+        run: |
+          ls ${{github.workspace}} --la
       - name: NPM Build
-        run: npm run build
+        run: |
+          npm run build
   deploy:
     name: 'Deploy'
     runs-on: ubuntu-latest
