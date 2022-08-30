@@ -16,7 +16,11 @@ jobs:
       - name: List files
         run: |
           ls ${{github.workspace}} -la
-      - name: NPM Build
+
+      - name: 'Install Dependencies'
+        run: npm install
+        working-directory: ./learning-react
+      - name: 'Build Application'
         run: |
           npm run build
         working-directory: ./learning-react
