@@ -13,7 +13,6 @@ jobs:
     steps:
       - name: NPM Build
         run: npm run build
-        working-directory: 'learning-react'
   deploy:
     name: 'Deploy'
     runs-on: ubuntu-latest
