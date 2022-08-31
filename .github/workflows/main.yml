@@ -52,10 +52,10 @@ jobs:
           publish-dir:  '${{github.workspace}}/${{env.ARTIFACT_NAME}}'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy from GitHub Actions ${{ github.event.pull_request.title }}"  
-          production-deploy: false
-          if: ${{ !github.event.pull_request }}
+          production-deploy: true
+          if: github.event.pull_request
           run: |
-            production-deploy: true
+            production-deploy: false
               
           
           enable-pull-request-comment: true
