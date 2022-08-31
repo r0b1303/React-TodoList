@@ -1,5 +1,5 @@
 name: CI
-
+#Geht das Programm ohne GITHUB Token????
 on:
   pull_request:
     branches: [ "main" ]
