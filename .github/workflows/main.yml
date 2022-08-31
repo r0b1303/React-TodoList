@@ -14,11 +14,13 @@ jobs:
     name: 'Build React App'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.2
-        name: 'Checkout Sources'
+      - name: 'Checkout Sources'
+        uses: actions/checkout@v2.4.2
+        
       - name: 'Install Dependencies'
         run: npm install
         working-directory: ./learning-react
+        
       - name: 'Build Application'
         run: |
           npm run build
