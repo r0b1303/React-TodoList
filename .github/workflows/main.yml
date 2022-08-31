@@ -52,7 +52,7 @@ jobs:
           deploy-message: "Deploy from GitHub Actions ${{ github.event.pull_request.title }}"  
           enable-pull-request-comment: true
           enable-commit-comment: true
-          enable-commit-status: true
+          #enable-commit-status: true
           #overwrites-pull-request-comment: true
           
         env:
