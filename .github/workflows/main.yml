@@ -1,6 +1,8 @@
 name: CI
 #Test Nr26
 on:
+  push:
+    branches: ["main"]
   pull_request:
     branches: [ "main" ]
     
