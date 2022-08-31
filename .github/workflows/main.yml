@@ -1,8 +1,6 @@
 name: CI
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
     
@@ -51,6 +49,7 @@ jobs:
         with:
           publish-dir:  '${{github.workspace}}/${{env.ARTIFACT_NAME}}'
           deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
