@@ -50,7 +50,7 @@ jobs:
           publish-dir:  '${{github.workspace}}/${{env.ARTIFACT_NAME}}'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy from GitHub Actions ${{ github.event.pull_request.title }}"  
-          #enable-pull-request-comment: true
+          enable-pull-request-comment: false
           #enable-commit-comment: true
           #enable-commit-status: true
           #overwrites-pull-request-comment: true
