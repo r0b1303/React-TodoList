@@ -1,5 +1,5 @@
 name: CI
-#Wir gehen auf Prod
+
 on:
   push:
     branches: ["main"]
