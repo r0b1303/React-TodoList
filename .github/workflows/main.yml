@@ -53,9 +53,8 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy from GitHub Actions ${{ github.event.pull_request.title }}"  
           production-deploy: true
-          if: github.event.pull_request
-          run: |
-            production-deploy: false
+          if: ${{github.event.pull_request}}
+          run: echo "Wo macht das hier bitte sinn?"
               
           
           enable-pull-request-comment: true
