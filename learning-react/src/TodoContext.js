@@ -4,14 +4,13 @@ import { GetTodos, SaveTodos } from "./Storage";
 const TodoContext = React.createContext();
 
 export const useTodos = () => {
-    const context = React.useContext(TodoContext);
-    if(!context) {
-        throw new Error("useTodos hook can only be used beneath TodoProvider")
-    }
+  const context = React.useContext(TodoContext);
+  if (!context) {
+    throw new Error("useTodos hook can only be used beneath TodoProvider");
+  }
 
-    return context;
-}
-
+  return context;
+};
 
 export const TodoProvider = ({ children }) => {
   const [todos, setTodos] = useState(GetTodos() || []);
@@ -19,7 +18,7 @@ export const TodoProvider = ({ children }) => {
   const onSetTodos = (todos) => {
     setTodos(todos);
     SaveTodos(todos);
-  }
+  };
 
   return (
     <TodoContext.Provider
@@ -28,7 +27,7 @@ export const TodoProvider = ({ children }) => {
         setTodos: onSetTodos,
       }}
     >
-        {children}
+      {children}
     </TodoContext.Provider>
   );
 };
