@@ -8,7 +8,6 @@ export const SaveTodos = (todos) => {
   }
 };
 
-//Funktioniert plötzlich wieder
 export const GetTodos = () => {
   const todos = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
   return todos;
