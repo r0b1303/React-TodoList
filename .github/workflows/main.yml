@@ -16,10 +16,13 @@ jobs:
     steps:
       - name: 'Checkout Sources'
         uses: actions/checkout@v2.4.2
-        
+
       - name: 'Install Dependencies'
         run: npm install
         working-directory: ./learning-react
+
+      - name: Run Playwright tests
+        uses: microsoft/playwright-github-action@v1.5.2
         
       - name: 'Build Application'
         run: |
