@@ -11,6 +11,6 @@ export class TodoForm {
   }
 
   public async submit() {
-    await this.page.locator("todo-button").press("Enter");
+    await this.page.locator('input[type="text"]').press("Enter");
   }
 }

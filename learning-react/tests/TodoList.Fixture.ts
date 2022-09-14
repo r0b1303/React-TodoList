@@ -14,8 +14,17 @@ export class TodoList {
 
   public async checkTodo(todoName: string) {
     //Have to check which todo i want to check
-    const todo = this.page.locator(`.complete-btn`).click();
+    //const list = this.page.locator(`li`).filter({ hasText: todoName });
+
+    //Have to Edit it!
+    await this.page.locator(`div:nth-child(3) > .complete-btn`).click();
   }
 
-  public async deleteTodo(todoName: string) {}
+  public async deleteTodo(todoName: string) {
+    //Delete the first item in the row
+    await this.page.locator(`div:nth-child(3) > .trash-btn`).click();
+    await this.page.locator(`div:nth-child(2) > .trash-btn`).click();
+    await this.page.locator(`div:nth-child(1) > .trash-btn`).click();
+    //await this.page.locator(".trash-btn").first().click();
+  }
 }
