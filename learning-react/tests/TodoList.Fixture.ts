@@ -14,10 +14,16 @@ export class TodoList {
 
   public async checkTodo(todoName: string) {
     //Have to check which todo i want to check
-    //const list = this.page.locator(`li`).filter({ hasText: todoName });
 
     //Have to Edit it!
-    await this.page.locator(`div:nth-child(3) > .complete-btn`).click();
+    //await this.page
+    //  .locator(".complete-btn", {
+    //    has: this.page.locator("todo-item", { hasText: todoName }),
+    //  })
+    //  .click();
+    //await this.page.locator(`div:nth-child(3) > .complete-btn`).click();
+
+    await this.page.locator(`.todo.item`, { hasText: todoName });
   }
 
   public async deleteTodo(todoName: string) {
