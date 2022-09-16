@@ -21,9 +21,7 @@ export class TodoList {
     //    has: this.page.locator("todo-item", { hasText: todoName }),
     //  })
     //  .click();
-    //await this.page.locator(`div:nth-child(3) > .complete-btn`).click();
-
-    await this.page.locator(`.todo.item`, { hasText: todoName });
+    await this.page.locator(`div:nth-child(3) > .complete-btn`).click();
   }
 
   public async deleteTodo(todoName: string) {
