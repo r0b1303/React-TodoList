@@ -8,27 +8,20 @@ export class TodoList {
   }
 
   public async findItem(todoName: string) {
-    //Have to check if this works
-    await this.page.locator(`.todo-item:has-text[${todoName}]`);
+    // Have to check if this works
+    return this.page.locator(`text=${todoName}`);
+    //await this.page.locator(`text=${todoName}`);
   }
 
   public async checkTodo(todoName: string) {
-    //Have to check which todo i want to check
-
-    //Have to Edit it!
-    //await this.page
-    //  .locator(".complete-btn", {
-    //    has: this.page.locator("todo-item", { hasText: todoName }),
-    //  })
-    //  .click();
-    await this.page.locator(`div:nth-child(3) > .complete-btn`).click();
+    // Have to check which todo i want to check
+    await this.page.locator(`text=${todoName} >> .complete-btn`).click();
   }
 
   public async deleteTodo(todoName: string) {
     //Delete the first item in the row
-    await this.page.locator(`div:nth-child(3) > .trash-btn`).click();
-    await this.page.locator(`div:nth-child(2) > .trash-btn`).click();
-    await this.page.locator(`div:nth-child(1) > .trash-btn`).click();
+    await this.page.locator(`text=${todoName} >> .trash-btn`).first().click();
+
     //await this.page.locator(".trash-btn").first().click();
   }
 }
